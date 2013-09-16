@@ -1,0 +1,14 @@
+# how to set up django and virtualenv environment
+
+sudo apt-get install python-django
+
+# create virtual env for python
+virtualenv venv --distribute
+source venv/bin/activate
+# pip install django-toolbelt
+
+# create 
+django-admin.py startproject moviedb .
+
+
+# to deactivate virtualenv: "deactivate"
