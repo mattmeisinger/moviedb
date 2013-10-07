@@ -1,0 +1,12 @@
+
+
+1) Create ‘Create Account’ Page - Contains email address, desired username, password, and confirm password fields.  Password must be 6 or more characters long.
+
+2) Establish connection external provider (TMDB) to retrieve movie data and the cover art
+
+3) Create Movie Detail page - At the top of the page have the movie image, title, and details about the movie, and a summary of the user ratings for that movie.  Below that, user comments should be displayed.  Movie Ratings section and Comments section should appear on this page (see separate tasks for details on these).
+
+4) Create FindUsers method that accepts a string search phrase and returns a list of user objects
+
+5) Add review ratings to review model in database
+
