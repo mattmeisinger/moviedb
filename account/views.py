@@ -4,14 +4,15 @@ from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 from models import LoginForm
 
 def login(request):
 
     # Make sure 'Matt' username exists
-    u = User.objects.get(username__exact='matt')
+    u = User.objects.get(username__exact='d')
     if u is None:
-        u = User.objects.create_user('matt', 'mmeisinger@gmail.com', 'test')
+        u = User.objects.create_user('d', 'mmeisinger@gmail.com', 'test')
 
 
     if request.method == 'POST': # If the form has been submitted...
@@ -35,3 +36,24 @@ def login(request):
 @login_required(login_url='/account/login/')
 def logout(request):
     return render(request, 'account/logout.html');
+
+
+def create(request):
+
+    if request.method == 'POST': # If the form has been submitted...
+        # Make sure 'Matt' username exists
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            return HttpResponseRedirect('/') # Redirect after POST
+        else:
+            return render(request, 'account/create.html', {
+                'form': form,
+                'm': 'Is not valid'
+            })
+    else:
+        return render(request, 'account/create.html', {
+            'form': UserCreationForm(),
+            'm': 'Get'
+        })
+
